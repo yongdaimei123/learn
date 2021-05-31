@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="box">
+      <ul>
+        <li>我是li元素1</li>
+        <li>我是li元素2</li>
+        <li>我是li元素3</li>
+        <li>我是li元素4</li>
+        <li>我是li元素5</li>
+        <li>我是li元素6</li>
+        <li>我是li元素7</li>
+        <li>我是li元素8</li>
+      </ul>
+    </div>
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+         // 1. 获取所有的li标签, 然后注册鼠标移入事件
+         $('li').click(function(item,index){
+            $(this)
+            .css('background-color','pink')
+            .siblings()
+            .css('background-color','')
+
+
+         })
+          // 2. 在事件处理函数中,排他
+    </script>
+  </body>
+</html>

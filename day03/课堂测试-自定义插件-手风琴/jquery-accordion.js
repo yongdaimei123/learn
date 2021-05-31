@@ -1,0 +1,3 @@
+$.fn.accordion = function () {
+  
+}

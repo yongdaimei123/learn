@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>React App</title>
+
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+<div id="root">
+  <div class="todo-container">
+    <div class="todo-wrap">
+      <div class="todo-header">
+        <input type="text" placeholder="请输入你的任务名称，按回车键确认"/>
+      </div>
+      <ul class="todo-main">
+        <li>
+          <label>
+            <input type="checkbox"/>
+            <span>xxxxx</span>
+          </label>
+          <button class="btn btn-danger" >删除</button>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox"/>
+            <span>yyyy</span>
+          </label>
+          <button class="btn btn-danger" >删除</button>
+        </li>
+      </ul>
+      <div class="todo-footer">
+        <label>
+          <input type="checkbox"/>
+        </label>
+        <span>
+          <span>已完成0</span> / 全部2
+        </span>
+        <button class="btn btn-danger">清除已完成任务</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <script src="../day01/jquery-1.12.4.js"></script>
+    <script>
+        //需求按回车键添加表单内容
+        //1.获取输入信息添加到表单
+        $('.todo-header input').on('keyup',function(e){
+            if(e.keyCode === 13){
+                
+                var value =  $(this).val().trim()
+                if(!value) return
+            // console.log('.todo-header');
+            var str =' <li><label><input type="checkbox"/><span>'+
+                value+
+                '</span></label><button class="btn btn-danger" >删除</button></li>'
+            $('.todo-main').append(str)
+            $(this).val('')
+            }
+            allIsChacked()
+          
+        })
+        //需求2.点击复选框改变样式
+        $('.todo-main').on('click','li>label>input',function(){
+            $(this).next().toggleClass('isDone')
+            //全选
+            //看复选框选中的状态
+            var doneTotal = $('.todo-main li input:checked').length
+            var total = $('.todo-main li input').length
+            // console.log('出发了');
+            $('.todo-footer input').prop('checked',doneTotal === total)
+            allIsChacked()
+          
+          
+        })
+        $('.todo-footer input').on('click',function(){
+          $(this). parent().toggleClass('isDone')
+            //全选
+            //看复选框选中的状态
+            
+            allIsChacked()
+          
+        })
+        
+        function allIsChacked(){
+            var doneTotal = $('.todo-main li input:checked').length
+            var total = $('.todo-main li input').length
+            
+            if(doneTotal === total ===0){
+                $('.todo-footer input').prop('checked',false)
+                return
+            }
+            console.log(doneTotal,total)
+            $('.todo-footer input').prop('checked',doneTotal === total)
+        }
+    </script>
+</body>
+</html>
